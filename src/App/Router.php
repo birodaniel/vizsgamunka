@@ -39,7 +39,7 @@ class Router
             throw new RouteNotFoundException();
         }
 
-        if (is_callable($action)) { //ha hívható, akkor futtatjuk innen
+        if (is_callable($action)) {
             return call_user_func($action);
         }
 
