@@ -1,23 +1,24 @@
-<?php
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1><?=
+    $title ;
+    ?></h1>
+<hr>
+<div>
+    <?php if (!empty($invoice)): ?>
+        Invoice ID: <?= htmlspecialchars($invoice['id'], ENT_QUOTES) ?><br>
+        Invoice amount: <?= htmlspecialchars($invoice['amount'], ENT_QUOTES) ?><br>
+        User: <?= htmlspecialchars($invoice['name'], ENT_QUOTES) ?><br>
+    <?php endif;?>
 
-use App\App;
-use App\Config;
-use App\Router;
-use App\User;
-
-require_once __DIR__ . "/../vendor/autoload.php";
-
-//const STORAGE_PATH = __DIR__ . '/../storage/';
-const VIEW_PATH = __DIR__ . '/../views/';
-
-$router = new Router();
-
-$router->get('/', [User::class, 'index']);
-
-
-(new App(
-    $router,
-    ['uri' => $_SERVER['REQUEST_URI'], 'method' => strtolower($_SERVER['REQUEST_METHOD'])],
-    new Config($_ENV)
-))->run();
-
+</div>
+</body>
+</html>
