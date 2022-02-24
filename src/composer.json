@@ -13,7 +13,8 @@
   "require": {
     "ramsey/uuid": "^4.2",
     "fakerphp/faker": "^1.16",
-    "vlucas/phpdotenv": "^5.4"
+    "vlucas/phpdotenv": "^5.4",
+    "twig/twig": "^3.0"
   },
 
   "autoload": {
