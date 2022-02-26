@@ -9,6 +9,11 @@ class User
         return View::make('index', ['title' => 'Home Page']);
     }
 
+    public function register(): View
+    {
+        return View::make('register', ['title' => 'Regisztráció']);
+    }
+
     public function signUp(string $competitionId)
     {
 
