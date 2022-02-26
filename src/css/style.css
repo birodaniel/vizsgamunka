@@ -1,0 +1,50 @@
+html, body {
+    height: 100% !important;
+}
+
+.grey-medium {
+    background: #909090;
+}
+
+.black-light {
+    background: #121212;
+}
+
+.lime {
+    background: #97fb57;
+}
+
+.lime-button {
+    color: #97fb57;
+    background: #121212;
+    width: 300px;
+    margin-top: 10px;
+}
+
+.lime-button:hover {
+    background: #97fb57;
+    color: #121212;
+    width: 300px;
+    margin-top: 10px;
+}
+
+.black-button {
+    background: #97fb57;
+    color: #121212;
+    width: 300px;
+    margin-top: 10px;
+}
+
+.black-button:hover {
+    color: #97fb57;
+    background: #121212;
+    width: 300px;
+    margin-top: 10px;
+}
+.spartan {
+    font-family: 'Spartan', sans-serif;
+}
+
+.grotesk {
+    font-family: 'Space Grotesk', sans-serif;
+}
