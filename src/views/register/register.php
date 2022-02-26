@@ -9,35 +9,45 @@
     <title><?= $title ?></title>
 </head>
 <body>
-<h1><?= $title ?></h1>
-<form>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Felhasználó név</label>
-        <input type="text" class="form-control" id="exampleInputEmail1">
+<section class="m-1">
+    <div class="d-flex justify-content-center  h-100">
+        <form class="bg-info p-5">
+            <div class="mx-3 my-3  d-flex justify-content-center">
+                <h1><?= $title ?></h1>
+            </div>
+            <div class="mx-3 my-2">
+                <label for="exampleInputPassword1" class="form-label d-flex justify-content-center">Név</label>
+                <input type="text" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mx-3 my-2">
+                <label for="exampleInputPassword1" class="form-label d-flex justify-content-center">Felhasználónév</label>
+                <input type="text" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mx-3 my-2">
+                <label for="exampleInputEmail1" class="form-label d-flex justify-content-center">Email</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mx-3 my-2">
+                <label for="exampleInputPassword1" class="form-label d-flex justify-content-center">Jelszó</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mx-3 my-2">
+                <label for="exampleInputPassword1" class="form-label d-flex justify-content-center">Jelszó újra</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Általános adatvédelmi nyilatkozat elfogadása</label>
+            </div>
+            <div class="mx-3 my-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success px-5">Regisztrál</button>
+            </div>
+            <div class="mx-3 my-2">
+                <a href="./index.php" class="btn btn-primary px-5  d-flex justify-content-center">Belép</a>
+            </div>
+        </form>
     </div>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Név</label>
-        <input type="text" class="form-control" id="exampleInputEmail1">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Jelszó</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Jelszó újra</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Általános adatvédelmi nyilatkozat elfogadása</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Regisztráció</button>
-</form>
+</section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

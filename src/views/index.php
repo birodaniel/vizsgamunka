@@ -9,24 +9,24 @@
     <title><?= $title ?></title>
 </head>
 <body>
-<section class="m-5">
+<section class="mx-5 my-3">
     <div class="d-flex justify-content-center  h-100">
         <form class="bg-info p-5">
-            <div class="mx-3 my-5  d-flex justify-content-center">
+            <div class="mx-3 my-2  d-flex justify-content-center">
                 <h1><?= $title ?></h1>
             </div>
-            <div class="mx-3 my-5">
+            <div class="mx-3 my-2">
                 <label for="exampleInputEmail1" class="form-label d-flex justify-content-center">Email</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
-            <div class="mx-3 my-5">
+            <div class="mx-3 my-2">
                 <label for="exampleInputPassword1" class="form-label d-flex justify-content-center">Jelszó</label>
                 <input type="password" class="form-control" id="exampleInputPassword1">
             </div>
-            <div class="mx-3 my-5 d-flex justify-content-center">
+            <div class="mx-3 my-2 d-flex justify-content-center">
                 <button type="submit" class="btn btn-success px-5">Belépés</button>
             </div>
-            <div class="mx-3 my-5">
+            <div class="mx-3 my-2">
                 <a href="./register/register.php" class="btn btn-primary px-5  d-flex justify-content-center">Regisztráció</a>
             </div>
         </form>
