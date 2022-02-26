@@ -14,7 +14,9 @@ const VIEW_PATH = __DIR__ . '/../views/';
 
 $router = new Router();
 
-$router->get('/', [User::class, 'index']);
+$router
+    ->get('/', [User::class, 'index'])
+    ->get('/register', [User::class, 'register']);
 
 
 (new App(
