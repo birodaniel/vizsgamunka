@@ -40,4 +40,9 @@ class App
             echo View::make('errors/404');
         }
     }
+
+    public function index(): View
+    {
+        return View::make('index', ['title' => 'Home Page']);
+    }
 }
