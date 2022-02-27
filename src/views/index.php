@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 <body>
-<section class="d-flex justify-content-center align-items-center h-100">
+<section class="justify-content-center align-items-center h-100">
     <div class="d-flex justify-content-center align-items-around form-height">
         <form class="grey-medium p-5">
             <div class="mx-4  d-flex justify-content-center">
@@ -19,7 +19,7 @@
             </div>
         </form>
     </div>
-    <div class="mx-4 my-5 d-flex justify-content-center">
+    <div class="d-flex justify-content-center align-items-around form-height">
         <a href="/register" class="btn lime-button spartan">Regisztráció</a>
     </div>
 </section>
