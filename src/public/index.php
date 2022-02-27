@@ -17,7 +17,7 @@ $router = new Router();
 $router
     ->get('/', [User::class, 'index'])
     ->get('/register', [User::class, 'register'])
-    ->post('/regsuccess', [User::class, 'create']);
+    ->post('/registration-success', [User::class, 'create']);
 
 
 (new App(

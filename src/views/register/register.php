@@ -4,7 +4,7 @@
 <body>
 <section>
     <div class="d-flex justify-content-center">
-        <form class="grey-medium p-5" method="post" action="/regsuccess">
+        <form class="grey-medium p-5" method="post" action="/registration-success">
             <div class="mx-3 my-3  d-flex justify-content-center">
                 <h1 class="spartan">Regisztráció</h1>
             </div>

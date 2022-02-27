@@ -25,6 +25,6 @@
         </form>
     </div>
 </section>
-<?php include __DIR__.'../includes/script.php'; ?></script>
+<?php include __DIR__.'../includes/script.php'; ?>
 </body>
 </html>
