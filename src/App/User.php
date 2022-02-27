@@ -2,6 +2,8 @@
 
 namespace App;
 
+use PDO;
+
 class User extends Model
 {
     public function index(): View
@@ -40,6 +42,39 @@ class User extends Model
             return View::make('regsuccess', ['title' => 'Sikeres regisztráció!']);
         }
         return 'Minden mező kitötése kötelező!';
+    }
+
+    public function login(): View|string
+    {
+        $email = filter_input(INPUT_POST, 'email');
+        $password = filter_input(INPUT_POST, 'password');
+        if (empty($email) || empty($password))
+        {
+            return 'Minden mező kitöltése kötelező!';
+        }
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+        {
+            return 'Hibás e-mail cím formátum!';
+        }
+
+        $query = "SELECT * FROM pusers WHERE email = '$email'";
+
+        $stmt = $this->db->query($query);
+
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $user_password = $data['password'];
+
+        if ($data['is_active'] === 1)
+        {
+            if (password_verify($password, $user_password))
+            {
+                $_SESSION['user_id'] = $data['user_id'];
+                $_SESSION['user_name'] = $data['user_name'];
+                return View::make('...', ['title' => '...']); // Kiegészíteni !!!
+            }
+        }
+        return 'Sikertelen bejelentkezés!';
     }
 
     public function signUpToCompetition(string $competitionId)
