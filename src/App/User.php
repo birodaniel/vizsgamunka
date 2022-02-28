@@ -13,12 +13,17 @@ class User extends Model
 
     public function register(): View
     {
-        return View::make('register', ['title' => 'Regisztráció']);
+        return View::make('register', ['title' => 'Versenysorozatok adminisztrációs felülete']);
     }
 
     public function login(): View
     {
-        return View::make('login', ['title' => 'Bejelentkezés']);
+        return View::make('login', ['title' => 'Versenysorozatok adminisztrációs felülete']);
+    }
+
+    public function tournament(): View
+    {
+        return View::make('tournament', ['title' => 'Versenysorozatok adminisztrációs felülete']);
     }
 
 //    public function profile(): View
@@ -83,6 +88,7 @@ class User extends Model
             {
                 $_SESSION['user_id'] = $data['user_id'];
                 $_SESSION['user_name'] = $data['user_name'];
+                $_SESSION['isAdmin'] = $data['is_admin'];
                 return View::make('profile', ['title' => 'Felhasználói fiók']);
             }
         }
