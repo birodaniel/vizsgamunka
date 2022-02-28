@@ -6,9 +6,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link spartan" href="#">Kilépés</a>
-                </li>
+                <?php foreach ($navbarItems as $key => $value) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link spartan" href="<?= $key ?>"><?= $value ?></a>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </div>

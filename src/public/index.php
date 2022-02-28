@@ -17,9 +17,10 @@ $router = new Router();
 $router
     ->get('/', [User::class, 'index'])
     ->get('/register', [User::class, 'register'])
-    ->post('/registration-success', [User::class, 'create']);
+    ->post('/registration-success', [User::class, 'create'])
     ->get('/login', [User::class, 'login'])
-    ->post('/profile', [User::class, 'profile']);
+    ->post('/profile', [User::class, 'profile'])
+    ->get('/tournament', [User::class, 'tournament']);
 
 (new App(
     $router,

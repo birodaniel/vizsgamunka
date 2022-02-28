@@ -1,9 +1,7 @@
-<?php include 'user.php';
+<?php
 
-/*
-if (filter_input(INPUT_POST, 'userRole') === 'admin') {
+if ($_SESSION['isAdmin'] === 1) {
     include 'admin.php';
 } else {
     include 'user.php';
 }
-*/

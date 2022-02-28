@@ -1,5 +1,14 @@
-<?php include 'header.php'; ?>
+<!doctype html>
+<html lang="en">
+<?php include __DIR__.'/includes/header.php'; ?>
 <body>
+
+<?php
+$navbarItems = [
+    '/' => 'Vissza a nyitólapra'
+];
+include __DIR__.'/includes/navigation.php'; ?>
+
 <section class="d-flex justify-content-center align-items-center h-100">
     <div class="d-flex justify-content-center align-items-around form-height">
         <form class="grey-medium p-5" method="post" action="/profile">
@@ -20,6 +29,6 @@
         </form>
     </div>
 </section>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<?php include __DIR__.'/includes/script.php'; ?>
 </body>
 </html>
