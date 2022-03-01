@@ -8,13 +8,28 @@ class User extends Model
 {
     public function index(): View
     {
-        return View::make('index', ['title' => 'Home Page']);
+        return View::make('index', ['title' => 'Versenysorozatok adminisztrációs felülete']);
     }
 
     public function register(): View
     {
-        return View::make('register', ['title' => 'Regisztráció']);
+        return View::make('register', ['title' => 'Versenysorozatok adminisztrációs felülete']);
     }
+
+    public function login(): View
+    {
+        return View::make('login', ['title' => 'Versenysorozatok adminisztrációs felülete']);
+    }
+
+    public function tournament(): View
+    {
+        return View::make('tournament', ['title' => 'Versenysorozatok adminisztrációs felülete']);
+    }
+
+//    public function profile(): View
+//    {
+//        return View::make('profile', ['title' => 'Felhasználói fiók']);
+//    }
 
     public function create(): View|string
     {
@@ -44,7 +59,7 @@ class User extends Model
         return 'Minden mező kitötése kötelező!';
     }
 
-    public function login(): View|string
+    public function profile(): View|string
     {
         $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');
@@ -58,10 +73,12 @@ class User extends Model
         }
 
         $query = "SELECT * FROM pusers WHERE email = '$email'";
-
         $stmt = $this->db->query($query);
-
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($data)) {
+            return 'Hibás e-mail cím vagy jelszó! Kérjük próbálja újra!';
+        }
 
         $user_password = $data['password'];
 
@@ -71,10 +88,11 @@ class User extends Model
             {
                 $_SESSION['user_id'] = $data['user_id'];
                 $_SESSION['user_name'] = $data['user_name'];
-                return View::make('...', ['title' => '...']); // Kiegészíteni !!!
+                $_SESSION['isAdmin'] = $data['is_admin'];
+                return View::make('profile', ['title' => 'Felhasználói fiók']);
             }
         }
-        return 'Sikertelen bejelentkezés!';
+        return 'Hibás e-mail cím vagy jelszó! Kérjük próbálja újra!';
     }
 
     public function signUpToCompetition(string $competitionId)

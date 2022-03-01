@@ -5,21 +5,25 @@
 
 <?php
 $navbarItems = [
-        '/login' => 'Bejelentkezés',
-        '/register' => 'Regisztráció'
-        ];
+    '/' => 'Kijelentkezés'
+];
 include __DIR__.'/includes/navigation.php'; ?>
 
 <section class="mx-5 mt-2 p-5 bg-light grey-white">
-    <h3 class="spartan">Ponttáblázat</h3>
+    <h3 class="spartan">Versenyek</h3>
     <table class="table grotesk">
         <tr>
             <th scope="col">Név</th>
-            <th scope="col">Meccsszám</th>
-            <th scope="col">Győzelem</th>
-            <th scope="col">Döntetlen</th>
-            <th scope="col">Vereség</th>
-            <th scope="col">Pontszám</th>
+            <th scope="col">Időpont</th>
+            <th scope="col">Műveletek</th>
+        </tr>
+    </table>
+    <h3 class="spartan">Eredmények</h3>
+    <table class="table grotesk">
+        <tr>
+            <th scope="col">Név</th>
+            <th scope="col">Versenyek</th>
+            <th scope="col">Eredmény</th>
         </tr>
     </table>
 </section>
