@@ -21,11 +21,11 @@ class User extends Model
         return View::make('login', 'login/', ['title' => 'Versenysorozatok adminisztrációs felülete']);
     }
 
-    public function tournament(): View
+    public function logout(): View
     {
-        return View::make('tournament', 'tournament/', ['title' => 'Versenysorozatok adminisztrációs felülete']);
+        $_SESSION = array();
+        return View::make('index', '', ['title' => 'Versenysorozatok adminisztrációs felülete']);
     }
-
 
     public function create(): View|string
     {
@@ -55,7 +55,16 @@ class User extends Model
         return 'Minden mező kitötése kötelező!';
     }
 
-    public function profile(): View|string
+    public function profileGet(): View
+    {
+        if (isset($_SESSION['user_id'])) {
+            return View::make('profile', 'login/', ['title' => 'Felhasználói fiók']);
+        } else {
+            return View::make('index', '', ['title' => 'Versenysorozatok adminisztrációs felülete']);
+        }
+    }
+
+    public function profilePost(): View|string
     {
         $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');

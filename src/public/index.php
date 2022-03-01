@@ -3,6 +3,7 @@
 use App\App;
 use App\Config;
 use App\Router;
+use App\Tournament;
 use App\User;
 
 require_once __DIR__ . "/../vendor/autoload.php";
@@ -19,8 +20,11 @@ $router
     ->get('/register', [User::class, 'register'])
     ->post('/registration-success', [User::class, 'create'])
     ->get('/login', [User::class, 'login'])
-    ->post('/profile', [User::class, 'profile'])
-    ->get('/tournament', [User::class, 'tournament']);
+    ->get('/logout', [User::class, 'logout'])
+    ->get('/profile', [User::class, 'profileGet'])
+    ->post('/profile', [User::class, 'profilePost'])
+    ->get('/tournament', [Tournament::class, 'newTournament'])
+    ->post('/create-tournament', [Tournament::class, 'create']);
 
 (new App(
     $router,

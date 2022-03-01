@@ -5,7 +5,7 @@
 
 <?php
 $navbarItems = [
-    '/' => 'Kijelentkezés'
+    '/logout' => 'Kijelentkezés'
 ];
 include __DIR__ . '/../includes/navigation.php'; ?>
 

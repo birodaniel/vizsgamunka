@@ -13,7 +13,7 @@ include __DIR__ . '/../includes/navigation.php'; ?>
     <div class="d-flex justify-content-center align-items-around form-height">
         <form class="grey-medium p-5" method="post" action="/profile">
             <div class="mx-4  d-flex justify-content-center">
-                <h1 class="spartan"><Bejelentkezés</h1>
+                <h1 class="spartan">Bejelentkezés</h1>
             </div>
             <div class="mx-4 my-5">
                 <label for="email" class="form-label d-flex justify-content-center grotesk">Email</label>
