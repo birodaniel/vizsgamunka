@@ -21,10 +21,10 @@ class User extends Model
         return View::make('login', 'login/', ['title' => 'Versenysorozatok adminisztrációs felülete']);
     }
 
-    public function logout(): View
+    public function logout()
     {
         $_SESSION = array();
-        return View::make('index', '', ['title' => 'Versenysorozatok adminisztrációs felülete']);
+        header('Location: ' . '/', true);
     }
 
     public function create(): View|string
