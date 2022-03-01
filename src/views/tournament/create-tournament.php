@@ -11,7 +11,7 @@ $navbarItems = [
 include __DIR__ . '/../includes/navigation.php'; ?>
 <section class="d-flex justify-content-center align-items-center h-100">
     <div class="d-flex justify-content-center form-height">
-        <form class="p-5 grey-white" method="post" action="/tournament">
+        <form class="p-5 grey-white" method="post" action="/create-tournament">
             <div class="mx-3 d-flex justify-content-center">
                 <h1 class="spartan">Új verseny</h1>
             </div>

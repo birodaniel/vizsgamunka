@@ -2,7 +2,9 @@
 
 namespace App;
 
-class Tournament
+use PDO;
+
+class Tournament extends Model
 {
     public function tournament(): View
     {
@@ -23,12 +25,12 @@ class Tournament
 
         if (isset($tournamentName) && isset($tournamentDate) && isset($players) && isset($rounds)) {
             $stmt = $this->db->prepare(
-                'INSERT INTO games (game_type, game_name, min_players, reg_start_date, total_turns)
-                        VALUES("FIX FORDULÓSZÁM", ?, ?, ?, ?)'
+                'INSERT INTO games (game_type, game_name, min_players, reg_start_date, start_date, stop_date, total_turns)
+                        VALUES("FIX FORDULÓSZÁM", ?, ?, ?, DATE("9999-12-30"), DATE("9999-12-31"), ?)'
             );
 
             $stmt->execute([$tournamentName, $players, $tournamentDate, $rounds]);
-            return View::make('tournament', 'tournament/', ['title' => 'Versenysorozatok adminisztrációs felülete']);
+            return View::make('profile', 'login/', ['title' => 'Felhasználói fiók']);
         }
         return 'Minden mező kitötése kötelező!';
     }
