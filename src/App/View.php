@@ -8,20 +8,21 @@ class View
 {
     /**
      * @param string $view
+     * @param string $folder
      * @param array $params
      */
-    public function __construct(protected string $view, protected array $params = [])
+    public function __construct(protected string $view, protected string $folder, protected array $params = [])
     {
     }
 
-    public static function make(string $view, array $params = []): static
+    public static function make(string $view, string $folder, array $params = []): static
     {
-        return new static($view, $params);
+        return new static($view, $folder, $params);
     }
 
     public function render(): string
     {
-        $viewPath = VIEW_PATH . $this->view . '.php';
+        $viewPath = VIEW_PATH . $this->folder . $this->view . '.php';
         if (!file_exists($viewPath)){
             throw new ViewNotFoundException();
         }

@@ -1,7 +1,14 @@
 <!doctype html>
 <html lang="en">
-<?php include __DIR__.'../includes/header.php'; ?>
+<?php include __DIR__ . '/../includes/header.php'; ?>
 <body>
+
+<?php
+$navbarItems = [
+        '/' => 'Vissza a nyitólapra'
+];
+include __DIR__ . '/../includes/navigation.php'; ?>
+
 <section>
     <div class="d-flex justify-content-center">
         <form class="grey-medium p-5" method="post" action="/registration-success">
@@ -38,6 +45,6 @@
         </form>
     </div>
 </section>
-<?php include __DIR__.'../includes/script.php'; ?></script>
+<?php include __DIR__ . '/../includes/script.php'; ?>
 </body>
 </html>

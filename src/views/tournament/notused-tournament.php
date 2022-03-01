@@ -1,14 +1,8 @@
 <!doctype html>
 <html lang="en">
-<?php include __DIR__.'/includes/header.php'; ?>
+<?php include __DIR__.'../includes/header.php'; ?>
 <body>
-
-<?php
-$navbarItems = [
-    '/' => 'Kijelentkezés'
-];
-include __DIR__.'/includes/navigation.php'; ?>
-
+<?php include __DIR__.'../includes/navigation.php'; ?>
 <section class="mx-5 mt-2 p-5 bg-light grey-white">
     <h3 class="spartan">Fordulók</h3>
     <table class="table grotesk">
@@ -40,6 +34,6 @@ include __DIR__.'/includes/navigation.php'; ?>
         </tr>
     </table>
 </section>
-<?php include __DIR__.'/includes/script.php'; ?>
+<?php include __DIR__.'../includes/script.php'; ?>
 </body>
 </html>

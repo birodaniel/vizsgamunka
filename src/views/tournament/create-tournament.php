@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
-<?php include __DIR__.'../includes/header.php'; ?>
+<?php include __DIR__.'/../includes/header.php'; ?>
 <body>
-<?php include __DIR__.'../includes/navigation.php'; ?>
+<?php include __DIR__.'/../includes/navigation.php'; ?>
 <section class="d-flex justify-content-center align-items-center h-100">
     <div class="d-flex justify-content-center form-height">
         <form class="p-5 grey-white">
@@ -33,6 +33,6 @@
         </form>
     </div>
 </section>
-<?php include __DIR__.'../includes/script.php'; ?>
+<?php include __DIR__.'/../includes/script.php'; ?>
 </body>
 </html>

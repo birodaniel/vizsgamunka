@@ -8,28 +8,24 @@ class User extends Model
 {
     public function index(): View
     {
-        return View::make('index', ['title' => 'Versenysorozatok adminisztrációs felülete']);
+        return View::make('index', '', ['title' => 'Versenysorozatok adminisztrációs felülete']);
     }
 
     public function register(): View
     {
-        return View::make('register', ['title' => 'Versenysorozatok adminisztrációs felülete']);
+        return View::make('register', 'register/', ['title' => 'Versenysorozatok adminisztrációs felülete']);
     }
 
     public function login(): View
     {
-        return View::make('login', ['title' => 'Versenysorozatok adminisztrációs felülete']);
+        return View::make('login', 'login/', ['title' => 'Versenysorozatok adminisztrációs felülete']);
     }
 
     public function tournament(): View
     {
-        return View::make('tournament', ['title' => 'Versenysorozatok adminisztrációs felülete']);
+        return View::make('tournament', 'tournament/', ['title' => 'Versenysorozatok adminisztrációs felülete']);
     }
 
-//    public function profile(): View
-//    {
-//        return View::make('profile', ['title' => 'Felhasználói fiók']);
-//    }
 
     public function create(): View|string
     {
@@ -54,7 +50,7 @@ class User extends Model
             );
 
             $stmt->execute([$email, $name, $userName, $password]);
-            return View::make('regsuccess', ['title' => 'Sikeres regisztráció!']);
+            return View::make('registration-success', 'register/', ['title' => 'Sikeres regisztráció!']);
         }
         return 'Minden mező kitötése kötelező!';
     }
@@ -89,7 +85,7 @@ class User extends Model
                 $_SESSION['user_id'] = $data['user_id'];
                 $_SESSION['user_name'] = $data['user_name'];
                 $_SESSION['isAdmin'] = $data['is_admin'];
-                return View::make('profile', ['title' => 'Felhasználói fiók']);
+                return View::make('profile', 'login/', ['title' => 'Felhasználói fiók']);
             }
         }
         return 'Hibás e-mail cím vagy jelszó! Kérjük próbálja újra!';
