@@ -39,7 +39,7 @@ use App\Tournament;
                                 <td scope="col">'.$game['start_date'].'</td>
                                 <td scope="col">'.$game['stop_date'].'</td>
                                 <td>
-                                    <form method="post" action="/join">
+                                    <form method="post" action="/join-tournament">
                                         <input hidden="true" type="number" name="tournamentId" value="' . $game['tournament_id'] . '">
                                         <button type="submit" class="btn join-button spartan">Csatlakozás</button>
                                     </form>
