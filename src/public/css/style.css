@@ -67,6 +67,21 @@ img {
     width: 300px;
     margin-top: 10px;
 }
+
+.join-button {
+    background: #97fb57;
+    color: #121212;
+    width: 130px;
+    margin-top: 5px;
+}
+
+.join-button:hover {
+    color: #97fb57;
+    background: #121212;
+    width: 130px;
+    margin-top: 5px;
+}
+
 .spartan {
     font-family: 'Spartan', sans-serif;
 }
