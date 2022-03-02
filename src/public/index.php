@@ -3,12 +3,14 @@
 use App\App;
 use App\Config;
 use App\Router;
+use App\Tournament;
 use App\User;
 
 require_once __DIR__ . "/../vendor/autoload.php";
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
+session_start();
 //const STORAGE_PATH = __DIR__ . '/../storage/';
 const VIEW_PATH = __DIR__ . '/../views/';
 
@@ -19,8 +21,11 @@ $router
     ->get('/register', [User::class, 'register'])
     ->post('/registration-success', [User::class, 'create'])
     ->get('/login', [User::class, 'login'])
-    ->post('/profile', [User::class, 'profile'])
-    ->get('/tournament', [User::class, 'tournament']);
+    ->get('/logout', [User::class, 'logout'])
+    ->get('/profile', [User::class, 'profileGet'])
+    ->post('/profile', [User::class, 'profilePost'])
+    ->get('/tournament', [Tournament::class, 'newTournament'])
+    ->post('/create-tournament', [Tournament::class, 'create']);
 
 (new App(
     $router,
