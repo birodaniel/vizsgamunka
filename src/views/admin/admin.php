@@ -45,6 +45,11 @@ use App\User;
             }
         }
         ?>
+        <tr>
+            <td colspan="6">
+                <a href="/tournament" class="btn px-5 black-button spartan">Létrehozás</a>
+            </td>
+        </tr>
     </table>
 </section>
 
