@@ -16,11 +16,6 @@ class Tournament extends Model
         return View::make('create-tournament', 'tournament/', ['title' => 'Versenysorozatok adminisztrációs felülete']);
     }
 
-    public function joinSuccess()
-    {
-        header('Location: ' . '/profile', true);
-    }
-
     public function create(): View|string
     {
         $tournamentName = filter_input(INPUT_POST, 'tournamentName');
@@ -71,20 +66,25 @@ class Tournament extends Model
 
         $query = "SELECT tournament_name FROM tournaments WHERE tournament_id = ?";
         $stmt = $this->db->prepare($query);
-        //$stmt->bind_param("i", $tournamentId);
         $stmt->execute([$tournamentId]);
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $tournamentExists = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if(isset($result) && $userRole === 0){
+        $query = "SELECT player_id FROM players WHERE user_id = ? AND tournament_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$userId, $tournamentId]);
+        $alreadySignedUp = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if(isset($tournamentExists) && empty($alreadySignedUp) && $userRole === 0){
             $stmt = $this->db->prepare(
                 'INSERT INTO players (user_id, tournament_id, status, time_created)
                         VALUES(?, ?, "REGISTERED", NOW())'
             );
 
             $stmt->execute([$userId, $tournamentId]);
+            header('Location: ' . '/profile', true);
             return View::make('profile', 'login/', ['title' => 'Felhasználói fiók']);
         }
-        return 'Hiba a jelentkezéskor! Kérjük próbálja újra!';
+        return 'Már jelentkeztél erre a versenyre! (vagy valami más gond van)';
     }
 
     public function open()
