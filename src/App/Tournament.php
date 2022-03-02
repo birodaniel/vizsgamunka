@@ -34,7 +34,7 @@ class Tournament extends Model
             isset($maxPlayers) &&
             isset($rounds)) {
             $stmt = $this->db->prepare(
-                'INSERT INTO games (game_type, game_name, min_players, max_players, reg_start_date, start_date, stop_date, total_turns)
+                'INSERT INTO tournaments (game_type, tournament_name, min_players, max_players, reg_start_date, start_date, stop_date, total_turns)
                         VALUES("FIX FORDULÓSZÁM", ?, ?, ?, ?, ?, ?, ?)'
             );
 
@@ -46,16 +46,16 @@ class Tournament extends Model
 
     public function showTournaments()
     {
-        $query = "SELECT * FROM games";
+        $query = "SELECT * FROM tournaments";
         $stmt = $this->db->query($query);
-        $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $tournaments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if (empty($games))
+        if (empty($tournaments))
         {
             return 'Jelenleg nincs megjeleníthető verseny!';
         }
 
-        return $games;
+        return $tournaments;
     }
 
     public function open()

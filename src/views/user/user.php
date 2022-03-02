@@ -33,8 +33,8 @@ use App\Tournament;
                 foreach ($games as $game)
                 {
                     echo '<tr>
-                                <th scope="col">'.$game['game_id'].'</th>
-                                <th scope="col">'.$game['game_name'].'</th>
+                                <th scope="col">'.$game['tournament_id'].'</th>
+                                <th scope="col">'.$game['_name'].'</th>
                                 <th scope="col">'.$game['game_type'].'</th>
                                 <th scope="col">'.$game['start_date'].'</th>
                                 <th scope="col">'.$game['stop_date'].'</th>

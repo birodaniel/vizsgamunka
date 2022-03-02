@@ -26,20 +26,20 @@ include __DIR__.'/includes/navigation.php'; ?>
         <?php
         $tournament = new Tournament();
 
-        $games = $tournament->showTournaments();
+        $tournaments = $tournament->showTournaments();
 
-        if (isset($games))
+        if (isset($tournaments))
         {
-            if (is_array($games))
+            if (is_array($tournaments))
             {
-                foreach ($games as $game)
+                foreach ($tournaments as $item)
                 {
                     echo '<tr>
-                                <th scope="col">'.$game['game_id'].'</th>
-                                <th scope="col">'.$game['game_name'].'</th>
-                                <th scope="col">'.$game['game_type'].'</th>
-                                <th scope="col">'.$game['start_date'].'</th>
-                                <th scope="col">'.$game['stop_date'].'</th>
+                                <th scope="col">'.$item['tournament_id'].'</th>
+                                <th scope="col">'.$item['tournament_name'].'</th>
+                                <th scope="col">'.$item['game_type'].'</th>
+                                <th scope="col">'.$item['start_date'].'</th>
+                                <th scope="col">'.$item['stop_date'].'</th>
                              </tr>';
                 }
             }
