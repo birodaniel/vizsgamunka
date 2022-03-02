@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
-<?php include __DIR__.'/includes/header.php'; ?>
+<?php use App\Tournament;
+
+include __DIR__.'/includes/header.php'; ?>
 <body>
 
 <?php
@@ -9,8 +11,46 @@ $navbarItems = [
         '/register' => 'Regisztráció'
         ];
 include __DIR__.'/includes/navigation.php'; ?>
+
+<section class="mx-5 mt-2 p-5 bg-light grey-white">
+    <h3 class="spartan">Versenyek</h3>
+    <p>Jelentkezéshez lépj be vagy regisztrálj!</p>
+    <table class="table grotesk">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Megnevezés</th>
+            <th scope="col">Kategória</th>
+            <th scope="col">Kezdés</th>
+            <th scope="col">Befejezés</th>
+        </tr>
+        <?php
+        $tournament = new Tournament();
+
+        $games = $tournament->showTournaments();
+
+        if (isset($games))
+        {
+            if (is_array($games))
+            {
+                foreach ($games as $game)
+                {
+                    echo '<tr>
+                                <th scope="col">'.$game['game_id'].'</th>
+                                <th scope="col">'.$game['game_name'].'</th>
+                                <th scope="col">'.$game['game_type'].'</th>
+                                <th scope="col">'.$game['start_date'].'</th>
+                                <th scope="col">'.$game['stop_date'].'</th>
+                             </tr>';
+                }
+            }
+        }
+        ?>
+    </table>
+</section>
+
+<!--
 <?php
-require_once './vizsgamunka/src/App/DB.php';
+/*require_once '../App/DB.php';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -26,7 +66,7 @@ try {
 } catch (PDOException $e) {
     die("Could not connect to the database $dbname :" . $e->getMessage());
 }
-?>
+*/?>
 <section class="mx-5 mt-2 p-5 bg-light grey-white">
     <h3 class="spartan">Ponttáblázat</h3>
     <table class="table grotesk">
@@ -38,23 +78,23 @@ try {
             <th scope="col">Vereség</th>
             <th scope="col">Pontszám</th>
         </tr>
-        <?php if (!$sql) {?>
+        <?php /*if (!$sql) {*/?>
             <tr>
                 <td colspan="5">Nincsenek fordulók</td>
             </tr>
-        <?php }  else {?>
+        <?php /*}  else {*/?>
 
-            <?php while ($row = $q->fetch()): ?>
+            <?php /*while ($row = $q->fetch()): */?>
                 <tr>
-                    <td><?php echo htmlspecialchars($row['match_id']) ?></td>
-                    <td><?php echo htmlspecialchars($row['turn_id']) ?></td>
-                    <td><?php echo htmlspecialchars($row['result1']); ?></td>
-                    <td><?php echo htmlspecialchars($row['result2']); ?></td>
+                    <td><?php /*echo htmlspecialchars($row['match_id']) */?></td>
+                    <td><?php /*echo htmlspecialchars($row['turn_id']) */?></td>
+                    <td><?php /*echo htmlspecialchars($row['result1']); */?></td>
+                    <td><?php /*echo htmlspecialchars($row['result2']); */?></td>
                 </tr>
-            <?php endwhile; ?>
-        <?php } ?>
+            <?php /*endwhile; */?>
+        <?php /*} */?>
     </table>
-</section>
+</section>-->
 <?php include __DIR__.'/includes/script.php'; ?>
 </body>
 </html>

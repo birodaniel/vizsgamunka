@@ -35,6 +35,20 @@ class Tournament extends Model
         return 'Minden mező kitötése kötelező!';
     }
 
+    public function showTournaments()
+    {
+        $query = "SELECT * FROM games";
+        $stmt = $this->db->query($query);
+        $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (empty($games))
+        {
+            return 'Jelenleg nincs megjeleníthető verseny!';
+        }
+
+        return $games;
+    }
+
     public function open()
     {
 

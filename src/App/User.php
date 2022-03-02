@@ -100,6 +100,20 @@ class User extends Model
         return 'Hibás e-mail cím vagy jelszó! Kérjük próbálja újra!';
     }
 
+    public function showUsers()
+    {
+        $query = "SELECT * FROM pusers";
+        $stmt = $this->db->query($query);
+        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (empty($users))
+        {
+            return 'Jelenleg nincs megjeleníthető verseny!';
+        }
+
+        return $users;
+    }
+
     public function signUpToCompetition(string $competitionId)
     {
 

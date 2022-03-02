@@ -7,10 +7,46 @@
 $navbarItems = [
     '/logout' => 'Kijelentkezés'
 ];
-include __DIR__ . '/../includes/navigation.php'; ?>
-<?php
-require_once './vizsgamunka/src/App/DB.php';
+include __DIR__ . '/../includes/navigation.php';
+//use App\DB;
+use App\Tournament;
+?>
+<section class="mx-5 mt-2 p-5 bg-light grey-white">
+    <h3 class="spartan">Versenyek</h3>
+    <table class="table grotesk">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Megnevezés</th>
+            <th scope="col">Kategória</th>
+            <th scope="col">Kezdés</th>
+            <th scope="col">Befejezés</th>
+        </tr>
+        <?php
+        $tournament = new Tournament();
 
+        $games = $tournament->showTournaments();
+
+        if (isset($games))
+        {
+            if (is_array($games))
+            {
+                foreach ($games as $game)
+                {
+                    echo '<tr>
+                                <th scope="col">'.$game['game_id'].'</th>
+                                <th scope="col">'.$game['game_name'].'</th>
+                                <th scope="col">'.$game['game_type'].'</th>
+                                <th scope="col">'.$game['start_date'].'</th>
+                                <th scope="col">'.$game['stop_date'].'</th>
+                             </tr>';
+                }
+            }
+        }
+        ?>
+</table>
+</section>
+
+<?php /*
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
@@ -24,10 +60,9 @@ try {
     $q->setFetchMode(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     die("Could not connect to the database $dbname :" . $e->getMessage());
-}
+}*/
 ?>
-
-<section class="mx-5 mt-2 p-5 bg-light grey-white">
+<!--<section class="mx-5 mt-2 p-5 bg-light grey-white">
     <h3 class="spartan">Versenyek</h3>
     <table class="table grotesk">
         <tr>
@@ -38,23 +73,23 @@ try {
             <th scope="col">Fordulók száma</th>
             <th scope="col">Műveletek</th>
         </tr>
-        <?php if (!$sql) {?>
+        <?php /*if (!$sql) {*/?>
             <tr>
                 <td colspan="6">Nincsenek versenyek</td>
             </tr>
-        <?php }  else {?>
+        <?php /*}  else {*/?>
 
-            <?php while ($row = $q->fetch()): ?>
+            <?php /*while ($row = $q->fetch()): */?>
                 <tr>
-                    <td><?php echo htmlspecialchars($row['game_name']) ?></td>
-                    <td><?php echo htmlspecialchars($row['reg_start_date']) ?></td>
-                    <td><?php echo htmlspecialchars($row['start_date']) ?></td>
-                    <td><?php echo htmlspecialchars($row['stop_date']) ?></td>
-                    <td><?php echo htmlspecialchars($row['total_turns']); ?></td>
+                    <td><?php /*echo htmlspecialchars($row['game_name']) */?></td>
+                    <td><?php /*echo htmlspecialchars($row['reg_start_date']) */?></td>
+                    <td><?php /*echo htmlspecialchars($row['start_date']) */?></td>
+                    <td><?php /*echo htmlspecialchars($row['stop_date']) */?></td>
+                    <td><?php /*echo htmlspecialchars($row['total_turns']); */?></td>
                     <td><a href="/join" class="btn lime-button spartan">Csatlakozás</a></td>
                 </tr>
-            <?php endwhile; ?>
-        <?php } ?>
+            <?php /*endwhile; */?>
+        <?php /*} */?>
     </table>
     <h3 class="spartan">Eredmények</h3>
     <table class="table grotesk">
@@ -63,22 +98,23 @@ try {
             <th scope="col">Pontok</th>
             <th scope="col">Meccsek</th>
         </tr>
-        <?php if (!$sql) {?>
+        <?php /*if (!$sql) {*/?>
             <tr>
                 <td colspan="5">Nincsenek eredmények</td>
             </tr>
-        <?php }  else {?>
+        <?php /*}  else {*/?>
 
-            <?php while ($row = $q->fetch()): ?>
+            <?php /*while ($row = $q->fetch()): */?>
                 <tr>
-                    <td><?php echo htmlspecialchars($row['game_name']) ?></td>
-                    <td><?php echo htmlspecialchars($row['points']) ?></td>
-                    <td><?php echo htmlspecialchars($row['matched']); ?></td>
+                    <td><?php /*echo htmlspecialchars($row['game_name']) */?></td>
+                    <td><?php /*echo htmlspecialchars($row['points']) */?></td>
+                    <td><?php /*echo htmlspecialchars($row['matched']); */?></td>
                 </tr>
-            <?php endwhile; ?>
-        <?php } ?>
+            <?php /*endwhile; */?>
+        <?php /*} */?>
     </table>
 </section>
+-->
 <?php include __DIR__ . '/../includes/script.php'; ?>
 </body>
 </html>
