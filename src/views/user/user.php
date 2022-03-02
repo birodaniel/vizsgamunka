@@ -17,7 +17,7 @@
         <tr>
             <th scope="col">Név</th>
             <th scope="col">Versenyek</th>
-            <th scope="col">Eredmény</th>
+            <th scope="col">Eredménydsfsdfds</th>
         </tr>
     </table>
 </section>
