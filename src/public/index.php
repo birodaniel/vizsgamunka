@@ -25,7 +25,8 @@ $router
     ->get('/profile', [User::class, 'profileGet'])
     ->post('/profile', [User::class, 'profilePost'])
     ->get('/tournament', [Tournament::class, 'newTournament'])
-    ->post('/create-tournament', [Tournament::class, 'create']);
+    ->post('/create-tournament', [Tournament::class, 'create'])
+    ->post('/join-tournament', [Tournament::class, 'join']);
 
 (new App(
     $router,

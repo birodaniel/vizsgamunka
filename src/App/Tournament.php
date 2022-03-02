@@ -58,6 +58,35 @@ class Tournament extends Model
         return $tournaments;
     }
 
+    public function join(): View|string
+    {
+        $tournamentId = filter_input(INPUT_POST, 'tournamentId');
+        $userId = $_SESSION['user_id'];
+        $userRole = $_SESSION['isAdmin'];
+
+        $query = "SELECT tournament_name FROM tournaments WHERE tournament_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$tournamentId]);
+        $tournamentExists = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $query = "SELECT player_id FROM players WHERE user_id = ? AND tournament_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$userId, $tournamentId]);
+        $alreadySignedUp = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if(isset($tournamentExists) && empty($alreadySignedUp) && $userRole === 0){
+            $stmt = $this->db->prepare(
+                'INSERT INTO players (user_id, tournament_id, status, time_created)
+                        VALUES(?, ?, "REGISTERED", NOW())'
+            );
+
+            $stmt->execute([$userId, $tournamentId]);
+            header('Location: ' . '/profile', true);
+            return View::make('profile', 'login/', ['title' => 'Felhasználói fiók']);
+        }
+        return 'Már jelentkeztél erre a versenyre! (vagy valami más gond van)';
+    }
+
     public function open()
     {
 
