@@ -19,17 +19,26 @@ class Tournament extends Model
     public function create(): View|string
     {
         $tournamentName = filter_input(INPUT_POST, 'tournamentName');
-        $tournamentDate = filter_input(INPUT_POST, 'tournamentDate');
-        $players = filter_input(INPUT_POST, 'players');
+        $regDate = filter_input(INPUT_POST, 'registrationDate');
+        $startDate = filter_input(INPUT_POST, 'tournamentStartDate');
+        $endDate = filter_input(INPUT_POST, 'tournamentEndDate');
+        $minPlayers = filter_input(INPUT_POST, 'minPlayers');
+        $maxPlayers = filter_input(INPUT_POST, 'maxPlayers');
         $rounds = filter_input(INPUT_POST, 'rounds');
 
-        if (isset($tournamentName) && isset($tournamentDate) && isset($players) && isset($rounds)) {
+        if (isset($tournamentName) &&
+            isset($regDate) &&
+            isset($startDate)&&
+            isset($endDate)&&
+            isset($minPlayers)&&
+            isset($maxPlayers) &&
+            isset($rounds)) {
             $stmt = $this->db->prepare(
-                'INSERT INTO games (game_type, game_name, min_players, reg_start_date, start_date, stop_date, total_turns)
-                        VALUES("FIX FORDULÓSZÁM", ?, ?, ?, DATE("9999-12-30"), DATE("9999-12-31"), ?)'
+                'INSERT INTO games (game_type, game_name, min_players, max_players, reg_start_date, start_date, stop_date, total_turns)
+                        VALUES("FIX FORDULÓSZÁM", ?, ?, ?, ?, ?, ?, ?)'
             );
 
-            $stmt->execute([$tournamentName, $players, $tournamentDate, $rounds]);
+            $stmt->execute([$tournamentName, $minPlayers, $maxPlayers, $regDate, $startDate, $endDate, $rounds]);
             return View::make('profile', 'login/', ['title' => 'Felhasználói fiók']);
         }
         return 'Minden mező kitötése kötelező!';
