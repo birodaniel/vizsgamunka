@@ -8,7 +8,6 @@ $navbarItems = [
     '/logout' => 'Kijelentkezés'
 ];
 include __DIR__ . '/../includes/navigation.php';
-//use App\DB;
 use App\Tournament;
 ?>
 <section class="mx-5 mt-2 p-5 bg-light grey-white">
@@ -39,11 +38,17 @@ use App\Tournament;
                                 <td scope="col">'.$game['start_date'].'</td>
                                 <td scope="col">'.$game['stop_date'].'</td>
                                 <td>
-                                    <form method="post" action="/join-tournament">
+                                    <form method="post" action="/join-tournament" class="form-btn">
                                         <input hidden="true" type="number" name="tournamentId" value="' . $game['tournament_id'] . '">
                                         <button type="submit" class="btn join-button spartan">Csatlakozás</button>
                                     </form>
                                 </td>
+                                <td>
+                                    <form method="post" action="/match" class="form-btn">
+                                        <input hidden="true" type="number" name="tournamentId" value="' . $game['tournament_id'] . '">
+                                        <input hidden="true" type="text" name="tournamentName" value="' . $game['tournament_name'] . '">
+                                        <button type="submit" class="btn details-button spartan">Részletek</button>
+                                    </form>
                              </tr>';
                 }
             }

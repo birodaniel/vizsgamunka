@@ -12,6 +12,10 @@ ul {
     height: 750px;
 }
 
+.form-btn {
+    width: 140px;
+}
+
 form {
     width: 450px;
 }
@@ -78,6 +82,20 @@ img {
 .join-button:hover {
     color: #97fb57;
     background: #121212;
+    width: 130px;
+    margin-top: 5px;
+}
+
+.details-button {
+    background: #121212;
+    color: #97fb57;
+    width: 130px;
+    margin-top: 5px;
+}
+
+.details-button:hover {
+    color: #121212;
+    background: #97fb57;
     width: 130px;
     margin-top: 5px;
 }
