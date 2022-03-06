@@ -46,24 +46,26 @@ use App\Game;
     <ul class="list-group list-group-horizontal d-flex justify-content-between">
         <li><h6  class="grotesk">Meccs kód</h6></li>
         <li><div>
-                <input type="text" class="form-control" id="exampleInputPassword1">
+                <input type="text" class="form-control" id="matchCode">
             </div></li>
         <li><button type="submit" class="btn black-button mt-0 spartan">Csatlakozás</button></li>
     </ul>
+</section>
+<section class="mx-5 mt-2 p-5 bg-light grey-white">
     <h3 class="spartan">Meccs eredmény</h3>
-    <form method="post" class="record-result">
+    <form method="post" action="/record-result" class="record-result">
     <ul class="list-group list-group-horizontal d-flex justify-content-between">
-        <li><h6 class="grotesk">Meccs kód</h6></li>
+        <li><h6 class="grotesk">Mérkőzés ID</h6></li>
         <li><div>
-                <input type="text" class="form-control" id="exampleInputPassword1">
+                <input type="text" class="form-control" id="matchId" name="matchId">
             </div></li>
         <li><h6 class="grotesk">Meccs eredmény</h6></li>
         <li><div>
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" name="result">
                     <option selected>Válassz egy eredményt</option>
-                    <option value="1">Nyertem</option>
-                    <option value="2">Vesztettem</option>
-                    <option value="3">Döntetlen lett</option>
+                    <option value="WL">Nyertem</option>
+                    <option value="LW">Vesztettem</option>
+                    <option value="TT">Döntetlen lett</option>
                 </select>
             </div></li>
         <li><button type="submit" class="btn black-button mt-0 spartan">Rögzítés</button></li>

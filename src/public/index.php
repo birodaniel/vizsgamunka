@@ -28,7 +28,8 @@ $router
     ->get('/tournament', [Tournament::class, 'newTournament'])
     ->post('/create-tournament', [Tournament::class, 'create'])
     ->post('/join-tournament', [Tournament::class, 'join'])
-    ->post('/match', [Game::class, 'index']);
+    ->post('/match', [Game::class, 'index'])
+    ->post('/record-result', [Game::class, 'result']);
 
 (new App(
     $router,
