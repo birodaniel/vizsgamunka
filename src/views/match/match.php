@@ -51,6 +51,7 @@ use App\Game;
         <li><button type="submit" class="btn black-button mt-0 spartan">Csatlakozás</button></li>
     </ul>
     <h3 class="spartan">Meccs eredmény</h3>
+    <form method="post" class="record-result">
     <ul class="list-group list-group-horizontal d-flex justify-content-between">
         <li><h6 class="grotesk">Meccs kód</h6></li>
         <li><div>
@@ -67,6 +68,7 @@ use App\Game;
             </div></li>
         <li><button type="submit" class="btn black-button mt-0 spartan">Rögzítés</button></li>
     </ul>
+    </form>
 </section>
 <?php include __DIR__ . '/../includes/script.php'; ?>
 </body>

@@ -8,6 +8,10 @@ ul {
     list-style-type: none;
 }
 
+.record-result {
+    width: auto;
+}
+
 .form-height {
     height: 750px;
 }
