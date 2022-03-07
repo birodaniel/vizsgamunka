@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Exceptions\InvalidMatchIdException;
 use PDO;
 
 class Game extends Model
@@ -12,15 +13,24 @@ class Game extends Model
         return View::make('match', 'match/', ['title' => $tournamentName]);
     }
 
-    public function result(): View
+    /**
+     * @throws InvalidMatchIdException
+     */
+    public function result()
     {
-        $tournamentName = filter_input(INPUT_POST, 'tournamentName');
-
         $this->recordResult();
         $this->validateResult();
-        //header('Location: ' . '/match', true);
+        $this->matchList();
+    }
+
+    public function matchList(): View
+    {
+        $tournamentName = filter_input(INPUT_POST, 'tournamentName');
+        $this->showMatches();
         return View::make('match', 'match/', ['title' => $tournamentName]);
     }
+
+
 
     public function showMatches(): string|array
     {
@@ -48,7 +58,7 @@ class Game extends Model
         return $matches;
     }
 
-    public function recordResult(): string
+    public function recordResult()
     {
         $userId = $_SESSION['user_id'];
         $matchId = filter_input(INPUT_POST, 'matchId');
@@ -61,11 +71,14 @@ class Game extends Model
         $query = "SELECT * FROM matches WHERE match_id = ? AND (player1 = ? OR player2 = ?)";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$matchId, $player1, $player2]);
-        $match = $stmt->fetchAll(PDO::FETCH_ASSOC)[0] ?? null;
+        $match = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if (!isset($match)) {
-            return 'Ehhez a mérkőzés azonosítóhoz egyik meccsed sem tartozik!';
+        if ($match === []) {
+            throw new InvalidMatchIdException();
+            //$this->matchList();
+            //return 'Ehhez a mérkőzés azonosítóhoz egyik meccsed sem tartozik!';
         }
+        $match = $match[0];
         if($match['status'] === 'valid'){
             return 'Az eredményt már mindkét fél rögzítette és érvényes is!';
         }
@@ -82,9 +95,8 @@ class Game extends Model
             );
             $stmt->execute([$result, $matchId]);
             return 'Eredmény sikeresen rögzítve!';
-        } else {
-            return 'Valami hiba történt.';
         }
+        $this->matchList();
     }
 
     public function validateResult()
@@ -94,8 +106,12 @@ class Game extends Model
         $query = "SELECT * FROM matches WHERE match_id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$matchId]);
-        $match = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+        $match = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        if ($match === []) {
+            return 'Ehhez a mérkőzés azonosítóhoz egyik meccsed sem tartozik!';
+        }
+        $match = $match[0];
         if ($match['result1'] === 'WL' && $match['result2'] === 'LW' ||
             $match['result1'] === 'LW' && $match['result2'] === 'WL' ||
             $match['result1'] === 'TT' && $match['result2'] === 'TT'){
