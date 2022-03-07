@@ -2,6 +2,7 @@
 
 use App\App;
 use App\Config;
+use App\Game;
 use App\Router;
 use App\Tournament;
 use App\User;
@@ -26,7 +27,10 @@ $router
     ->post('/profile', [User::class, 'profilePost'])
     ->get('/tournament', [Tournament::class, 'newTournament'])
     ->post('/create-tournament', [Tournament::class, 'create'])
-    ->post('/join-tournament', [Tournament::class, 'join']);
+    ->post('/join-tournament', [Tournament::class, 'join'])
+    ->post('/match', [Game::class, 'index'])
+    ->post('/record-result', [Game::class, 'result'])
+    ->get('/match', [Game::class, 'matchList']);
 
 (new App(
     $router,

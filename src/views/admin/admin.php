@@ -8,7 +8,6 @@ $navbarItems = [
     '/logout' => 'Kijelentkezés'
 ];
 include __DIR__ . '/../includes/navigation.php';
-//use App\DB;
 use App\Tournament;
 use App\User;
 
